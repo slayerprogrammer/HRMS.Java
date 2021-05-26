@@ -1,5 +1,5 @@
 # HRMS (Human Resource Management System)
-### Main Directory <a href="https://github.com/slayerprogrammer/HRMS.Java/tree/master/src/main/java/com/hrms/tolga"> click </a>
+### Main Directory <a href="https://github.com/slayerprogrammer/HRMS.Java/tree/master/src/main/java/com/hrms/applicationhrms"> click </a>
 
 ### Java - Spring Based Software.
 ### Dependencies : 
