@@ -1,10 +1,10 @@
-package com.hrms.tolga;
+package com.hrms.applicationhrms;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TolgaApplicationTests {
+class HrmsApplicationTests {
 
 	@Test
 	void contextLoads() {

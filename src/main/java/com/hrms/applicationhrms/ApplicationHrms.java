@@ -1,13 +1,13 @@
-package com.hrms.applicationhrms.tolga;
+package com.hrms.applicationhrms.applicationhrms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TolgaApplication {
+public class ApplicationHrms {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TolgaApplication.class, args);
+		SpringApplication.run(ApplicationHrms.class, args);
 	}
 
 }
