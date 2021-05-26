@@ -12,7 +12,7 @@
 -İş kuralları(Business Rules) yazıldı. 
 -Mesajlar için Sabitler yazıldı.
 
-###İş arayanlar
+### İş arayanlar
 
 - Kayıt sırasında kullanıcıdan ad, soyad, tcno, doğum yılı, e-Posta, şifre, şifre tekrarı bilgileri istendi.
 - Tüm alanlar zorunludur. Kullanıcı bilgilendirildi.
@@ -22,7 +22,7 @@
 - Daha önce kayıtlı bir e-posta veya tcno var ise kayıt gerçekleşmez. Kullanıcı bilgilendirildi.
 - Kayıdın gerçekleşmesi için e-posta doğrulaması (sahte servis) yazıldı.
 
-###İş verenler
+### İş verenler
 
 - Kayıt sırasında kullanıcıdan gerekli bilgiler istendi.
 - Web sitesi ile aynı domaine sahip değil ise işlem gerçekleşmez.
