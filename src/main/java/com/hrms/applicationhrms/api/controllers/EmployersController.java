@@ -25,6 +25,13 @@ public class EmployersController {
         return this.employerService.getAll();
     }
 
-
+    @PostMapping("/passivePost")
+    public ResponseEntity passivePost(int postId){
+        var result = this.employerService.passivePost(postId);
+        if(result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
 
 }

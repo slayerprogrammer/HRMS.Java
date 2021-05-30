@@ -37,5 +37,13 @@ public class SystemPersonnelsController {
         return ResponseEntity.badRequest().body(result);
     }
 
+     @PostMapping("/rejectPost")
+    public ResponseEntity rejectPost(int postId){
+        var result = this.systemPersonnelService.rejectPost(postId);
+        if(result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
 
 }

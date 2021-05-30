@@ -69,4 +69,14 @@ public class EmployerManager implements EmployerService {
         this.employerPendingApprovalService.save(entity);
         return new SuccessResult();
     }
+    @Override
+    public Result passivePost(int postId) {
+        var post = this.postService.getById(postId).getData();
+        post.setStatus(PostStatus.values()[3]);
+        var result = this.postService.update(post);
+        if(!result.isSuccess()){
+            return new ErrorResult(Messages.passiveError());
+        }
+        return new SuccessResult(Messages.passivePost());
+    }
 }

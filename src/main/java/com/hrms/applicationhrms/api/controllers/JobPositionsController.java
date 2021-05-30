@@ -46,6 +46,4 @@ public class JobPositionsController {
         return this.jobPositionService.delete(position);
     }
 
-
-
 }

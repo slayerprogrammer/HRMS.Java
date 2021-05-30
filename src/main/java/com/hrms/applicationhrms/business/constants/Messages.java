@@ -3,22 +3,22 @@ package com.hrms.applicationhrms.business.constants;
 public class Messages {
 
     public static String checkName() {
-        return "İsim Boş Bırakılamaz !";
+        return "İsim boş bırakılamaz ";
     }
     public static String notAValidPerson() {
         return "Geçersiz Kullanıcı";
     }
     public static String verificationSent() {
-        return "Doğrulama Kodu Gönderildi !";
+        return "Doğrulama Kodu Gönderildi";
     }
     public static String jobSeekerRegistered() {
-        return "İş Arayan Olarak Kayıt Oldunuz !";
+        return "İş arayan olarak kayıt oldunuz";
     }
     public static String employerRegistered() {
-        return "İş Veren Olarak Kayıt Oldunuz !";
+        return "İş veren olarak kayıt oldunuz";
     }
     public static String verificationFailed() {
-        return "Doğrulama Başarısız ,Kayıt Olunamadı !";
+        return "Doğrulama başarısız , kayıt olunamadı";
     }
     public static String jobSeekersListed(){return "İş Arayanlar listelendi";}
     public static String employersListed(){return "İş Verenler listelendi";}
@@ -35,4 +35,13 @@ public class Messages {
     public static String pendingApproval() {return "İşleminiz tamamlandı , Sistem onayladıktan sonra kaydınız gerçekleşecek";}
     public static String pendingApprovalListed() {return "Onay bekleyen iş verenler listelendi";}
     public static String usersListed(){return "Tüm kullanıcılar listelendi";}
+    public static String postAdded(){return "İlanınız eklendi";}
+    public static String postUpdated(){return "İlanınız güncellendi";}
+    public static String postValidationError(){return "Pozisyon adedi , şehir , iş tanımı , iş pozisyonu alanları zorunludur!";}
+    public static String activatedPost(){return "ilan kabul edildi";}
+    public static String activeError(){return "ilan kabul edilirken hata oluştu";}
+    public static String passiveError(){return "ilan pasif hale gelirken bir hata oluştu";}
+    public static String passivePost(){return "ilan pasifleştirildi";}
+    public static String rejectError(){return "ilan reddedilirken bir hata oluştu";}
+    public static String rejectPost(){return "ilan reddedildi";}
 }
