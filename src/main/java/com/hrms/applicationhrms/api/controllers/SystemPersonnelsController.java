@@ -1,9 +1,6 @@
 package com.hrms.applicationhrms.api.controllers;
 
 import com.hrms.applicationhrms.business.abstracts.SystemPersonnelService;
-import com.hrms.applicationhrms.entities.concretes.Employer;
-import com.hrms.applicationhrms.entities.concretes.JobPosition;
-import com.hrms.applicationhrms.entities.concretes.SystemPersonnelConfirmation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +34,25 @@ public class SystemPersonnelsController {
         return ResponseEntity.badRequest().body(result);
     }
 
-     @PostMapping("/rejectPost")
+    @PostMapping("/activePost")
+    public ResponseEntity activePost(int postId){
+        var result = this.systemPersonnelService.activePost(postId);
+        if(result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
+    @PostMapping("/passivePost")
+    public ResponseEntity passivePost(int postId){
+        var result = this.systemPersonnelService.passivePost(postId);
+        if(result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
+    @PostMapping("/rejectPost")
     public ResponseEntity rejectPost(int postId){
         var result = this.systemPersonnelService.rejectPost(postId);
         if(result.isSuccess()){
@@ -45,5 +60,6 @@ public class SystemPersonnelsController {
         }
         return ResponseEntity.badRequest().body(result);
     }
+
 
 }
