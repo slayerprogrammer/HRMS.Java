@@ -21,7 +21,7 @@ public class HrmsProjectApplication {
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("hrms.hrmsProject"))
+				.apis(RequestHandlerSelectors.basePackage("hrms.applicationhrms"))
 				.build();
 	}
 

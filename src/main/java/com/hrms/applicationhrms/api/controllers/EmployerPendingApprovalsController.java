@@ -25,6 +25,4 @@ public class EmployerPendingApprovalsController {
     public DataResult<List<EmployerPendingApproval>> getAll(){
         return this.employerPendingApprovalService.getAll();
     }
-
-
 }
