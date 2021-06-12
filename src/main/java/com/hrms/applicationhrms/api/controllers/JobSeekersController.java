@@ -26,5 +26,4 @@ public class JobSeekersController {
         return this.jobSeekerService.getAll();
     }
 
-
 }

@@ -1,11 +1,13 @@
 package com.hrms.applicationhrms.api.controllers;
 
 import com.hrms.applicationhrms.business.abstracts.PostService;
+import com.hrms.applicationhrms.entities.dtos.PostByFilterDto;
 import com.hrms.applicationhrms.entities.dtos.PostDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/posts")
 public class PostsController {
@@ -18,10 +20,20 @@ public class PostsController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity add(@RequestBody PostDto postDto) {
+    public ResponseEntity add(@Valid @RequestBody PostDto postDto) {
         var result = postService.add(postDto.toNewModel());
         if(result.isSuccess()){
             return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
+    @GetMapping("/getfilter")
+    public ResponseEntity getfilter(PostByFilterDto postByFilterDto){
+        var result = postService.getFilter(postByFilterDto);
+        if (result.isSuccess()){
+            return ResponseEntity.ok
+                    (result);
         }
         return ResponseEntity.badRequest().body(result);
     }
@@ -36,7 +48,7 @@ public class PostsController {
     }
 
     @GetMapping("/getAllIsActive")
-    public ResponseEntity getIsActive(){
+    public ResponseEntity getAllActives(){
         var result = postService.getAllActives();
         if (result.isSuccess()){
             return ResponseEntity.ok(result);
@@ -53,8 +65,17 @@ public class PostsController {
         return ResponseEntity.badRequest().body(result);
     }
 
+    @GetMapping("/getActivesByDate")
+    public ResponseEntity getActivesByDate(@RequestParam int postId){
+        var result = postService.getActivesByDate(postId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
     @GetMapping("/getAllIsPassive")
-    public ResponseEntity getIsPassive(){
+    public ResponseEntity getAllIsPassive(){
         var result = postService.getAllPassive();
         if (result.isSuccess()){
             return ResponseEntity.ok(result);
@@ -63,7 +84,7 @@ public class PostsController {
     }
 
     @GetMapping("/getAllIsRejected")
-    public ResponseEntity getIsRejected(){
+    public ResponseEntity getAllIsRejected(){
         var result = postService.getAllRejections();
         if (result.isSuccess()){
             return ResponseEntity.ok(result);

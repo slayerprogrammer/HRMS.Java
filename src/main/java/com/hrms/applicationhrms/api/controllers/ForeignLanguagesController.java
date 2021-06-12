@@ -37,7 +37,4 @@ public class ForeignLanguagesController {
         return ResponseEntity.badRequest().body(result);
     }
 
-
-
-
 }

@@ -33,6 +33,4 @@ public class JobSeekerImagesController {
     public ResponseEntity getAll(){
         return ResponseEntity.ok(this.imageService.getAll());
     }
-
-
 }
