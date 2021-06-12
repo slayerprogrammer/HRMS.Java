@@ -5,10 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -18,11 +17,17 @@ import javax.persistence.Table;
 @Table(name="system_personnels")
 public class SystemPersonnel extends User {
 
+    @NotBlank
+    @NotNull
     @Column(name = "first_name")
     private String firstName;
+
+    @NotBlank
+    @NotNull
     @Column(name = "last_name")
     private String lastName;
-    @Column(name = "depertment_id")
-    private String depertmendId;
+
+    @Column(name = "department_id")
+    private String departmendId;
 
 }

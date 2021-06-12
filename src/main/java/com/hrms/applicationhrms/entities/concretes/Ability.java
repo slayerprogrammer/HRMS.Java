@@ -25,6 +25,4 @@ public class Ability {
     @JsonIgnore
     @JoinColumn(name="resume_id")
     private Resume resume;
-
-
 }
