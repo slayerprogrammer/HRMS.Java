@@ -60,6 +60,4 @@ public class SystemPersonnelsController {
         }
         return ResponseEntity.badRequest().body(result);
     }
-
-
 }

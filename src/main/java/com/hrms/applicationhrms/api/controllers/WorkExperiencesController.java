@@ -37,7 +37,4 @@ public class WorkExperiencesController {
         return ResponseEntity.badRequest().body(result);
     }
 
-
-
-
 }
