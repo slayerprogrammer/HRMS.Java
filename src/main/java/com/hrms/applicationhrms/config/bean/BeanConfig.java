@@ -23,5 +23,9 @@ public class BeanConfig {
     public ImageService imageService(){
         return new CloudinaryImageAdapter(cloudinaryService());
     }
-
+    
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 }

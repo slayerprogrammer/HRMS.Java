@@ -1,14 +1,14 @@
 package com.hrms.applicationhrms.core.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.hrms.applicationhrms.entities.concretes.Employer;
-import com.hrms.applicationhrms.entities.concretes.JobSeeker;
-import com.hrms.applicationhrms.entities.concretes.SystemPersonnel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -24,10 +24,15 @@ public class User {
     @Column(name="id")
     private int id;
 
+    @Email
+    @NotNull
+    @NotBlank
     @Column(name="email",unique = true)
     private String email;
 
+    @NotNull
+    @NotBlank
     @Column(name="password")
     private String password;
-
 }
+
