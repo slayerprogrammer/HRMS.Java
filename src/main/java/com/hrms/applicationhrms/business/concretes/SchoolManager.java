@@ -48,6 +48,4 @@ public class SchoolManager implements SchoolService {
     public DataResult<List<School>> getAllByJobSeekerOrderByDateOfGraduation(int jobSeekerId) {
         return new SuccessDataResult<>(this.schoolDao.findByOrderByDateOfGraduationDesc(jobSeekerId));
     }
-
-
 }

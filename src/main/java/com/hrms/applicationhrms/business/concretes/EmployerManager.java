@@ -19,13 +19,16 @@ public class EmployerManager implements EmployerService {
 
     private EmployerDao employerDao;
     private EmailService emailService;
+    private PostService postService;
     private EmployerPendingApprovalService employerPendingApprovalService;
 
     @Autowired
     public EmployerManager(EmployerDao employerDao,EmailService emailService,
-                           EmployerPendingApprovalService employerPendingApprovalService) {
+                           EmployerPendingApprovalService employerPendingApprovalService,
+                           PostService postService) {
         this.employerDao = employerDao;
         this.emailService = emailService;
+        this.postService = postService;
         this.employerPendingApprovalService = employerPendingApprovalService;
     }
 
@@ -69,6 +72,7 @@ public class EmployerManager implements EmployerService {
         this.employerPendingApprovalService.save(entity);
         return new SuccessResult();
     }
+
     @Override
     public Result passivePost(int postId) {
         var post = this.postService.getById(postId).getData();
@@ -79,4 +83,6 @@ public class EmployerManager implements EmployerService {
         }
         return new SuccessResult(Messages.passivePost());
     }
+
+
 }

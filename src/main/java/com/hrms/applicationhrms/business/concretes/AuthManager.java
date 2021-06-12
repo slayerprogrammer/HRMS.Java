@@ -37,17 +37,6 @@ public class AuthManager implements AuthService {
 
     @Override
     public Result jobSeekerForRegister(JobSeekerForRegisterDto jobSeekerForRegisterDto) {
-
-        if(jobSeekerForRegisterDto.getFirstName() == "" ||
-                jobSeekerForRegisterDto.getLastName() == "" ||
-                jobSeekerForRegisterDto.getIdentityNumber() == "" ||
-                jobSeekerForRegisterDto.getBirthYear() == "" ||
-                jobSeekerForRegisterDto.getEmail() == "" ||
-                jobSeekerForRegisterDto.getPassword() == "" ||
-                jobSeekerForRegisterDto.getPasswordConfirm() == ""){
-            return new ErrorResult(Messages.mustBeAllInformation());
-        }
-
         var result = BusinessRules.run(checkEmail(jobSeekerForRegisterDto.getEmail()),
                 checkIdentityNumber(jobSeekerForRegisterDto.getIdentityNumber()),checkIfRealPerson(jobSeekerForRegisterDto),
                 checkPassword(jobSeekerForRegisterDto.getPassword(), jobSeekerForRegisterDto.getPasswordConfirm()));
@@ -73,15 +62,6 @@ public class AuthManager implements AuthService {
 
     @Override
     public Result employerForRegister(EmployerForRegisterDto employerForRegisterDto) {
-
-        if(employerForRegisterDto.getCompanyName() == "" ||
-                employerForRegisterDto.getWebsite() == "" ||
-                employerForRegisterDto.getEmail() == "" ||
-                employerForRegisterDto.getPhoneNumber() == "" ||
-                employerForRegisterDto.getPassword() == "" ||
-                employerForRegisterDto.getPasswordConfirm() == ""){
-            return new ErrorResult(Messages.mustBeAllInformation());
-        }
 
         var result = BusinessRules.run(checkDomain(employerForRegisterDto),
                 checkEmail(employerForRegisterDto.getEmail()),

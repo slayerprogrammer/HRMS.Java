@@ -54,5 +54,4 @@ public class UserManager implements UserService {
         return null;
     }
 
-
 }

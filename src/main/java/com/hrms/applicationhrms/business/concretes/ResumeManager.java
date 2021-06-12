@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class ResumeManager implements ResumeService {
 
@@ -26,17 +27,20 @@ public class ResumeManager implements ResumeService {
     private ForeignLanguageService foreignLanguageService;
     private AbilityService abilityService;
     private WorkExperienceService workExperienceService;
+    private LinkService linkService;
 
     @Autowired
     public ResumeManager(ResumeDao resumeDao,JobSeekerService jobSeekerService,
                          SchoolService schoolService,ForeignLanguageService foreignLanguageService,
-                         AbilityService abilityService,WorkExperienceService workExperienceService) {
+                         AbilityService abilityService,WorkExperienceService workExperienceService,
+                         LinkService linkService) {
         this.resumeDao = resumeDao;
         this.jobSeekerService=jobSeekerService;
         this.schoolService = schoolService;
         this.foreignLanguageService = foreignLanguageService;
         this.abilityService = abilityService;
         this.workExperienceService = workExperienceService;
+        this.linkService = linkService;
     }
 
     @Override
@@ -47,8 +51,6 @@ public class ResumeManager implements ResumeService {
         resume.setId(resume.getId());
         resume.setJobSeeker(jobSeeker);
         resume.setDescription(resumeDto.getDescription());
-        resume.setGithubAddress(resumeDto.getGithubAddress());
-        resume.setLinkedinAddress(resumeDto.getLinkedinAddress());
         this.resumeDao.save(resume);
         return new SuccessResult(Messages.resumeCreated());
     }
@@ -70,6 +72,7 @@ public class ResumeManager implements ResumeService {
         result.setForeignLanguages(this.foreignLanguageService.getAll(jobSeekerId).getData());
         result.setWorkExperiences(this.workExperienceService.getByBusinessDate(jobSeekerId).getData());
         result.setSchools(this.schoolService.getAllByJobSeekerOrderByDateOfGraduation(jobSeekerId).getData());
+        result.setLinks(this.linkService.getAll(jobSeekerId).getData());
         return new SuccessDataResult<>(result);
     }
 }
