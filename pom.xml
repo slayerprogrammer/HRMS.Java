@@ -11,7 +11,7 @@
 	<groupId>com.hrms</groupId>
 	<artifactId>applicationhrms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hrmsProject</name>
+	<name>applicationhrms</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -66,6 +66,12 @@
 			<groupId>com.cloudinary</groupId>
 			<artifactId>cloudinary-http44</artifactId>
 			<version>1.29.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.3.7</version>
 		</dependency>
 	</dependencies>
 
