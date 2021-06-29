@@ -27,4 +27,6 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
         ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors, Messages.validationError());
         return new ResponseEntity(errors,HttpStatus.BAD_REQUEST);
     }
+
+
 }

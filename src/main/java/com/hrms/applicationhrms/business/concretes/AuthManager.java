@@ -6,11 +6,11 @@ import com.hrms.applicationhrms.business.abstracts.JobSeekerService;
 import com.hrms.applicationhrms.business.abstracts.UserService;
 import com.hrms.applicationhrms.business.constants.Messages;
 import com.hrms.applicationhrms.core.adapters.JobSeekerCheckService;
-import com.hrms.applicationhrms.entities.concretes.EmployerPendingApproval;
+import com.hrms.applicationhrms.entities.concretes.Employer;
 import com.hrms.applicationhrms.entities.dtos.EmployerForRegisterDto;
 import com.hrms.applicationhrms.entities.dtos.JobSeekerForRegisterDto;
 import com.hrms.applicationhrms.core.entities.concretes.User;
-import com.hrms.applicationhrms.entities.dtos.UserForLoginDto;
+import com.hrms.applicationhrms.core.entities.dtos.UserForLoginDto;
 import com.hrms.applicationhrms.core.utilities.business.BusinessRules;
 import com.hrms.applicationhrms.core.utilities.results.*;
 import com.hrms.applicationhrms.entities.concretes.JobSeeker;
@@ -71,14 +71,14 @@ public class AuthManager implements AuthService {
             return result;
         }
 
-        var employerPendingApproval = new EmployerPendingApproval();
-        employerPendingApproval.setCompanyName(employerForRegisterDto.getCompanyName());
-        employerPendingApproval.setPhoneNumber(employerForRegisterDto.getPhoneNumber());
-        employerPendingApproval.setEmail(employerForRegisterDto.getEmail());
-        employerPendingApproval.setWebSite(employerForRegisterDto.getWebsite());
-        employerPendingApproval.setPassword(employerForRegisterDto.getPassword());
+        var employer = new Employer();
+        employer.setCompanyName(employerForRegisterDto.getCompanyName());
+        employer.setPhoneNumber(employerForRegisterDto.getPhoneNumber());
+        employer.setEmail(employerForRegisterDto.getEmail());
+        employer.setWebSite(employerForRegisterDto.getWebsite());
+        employer.setPassword(employerForRegisterDto.getPassword());
 
-        var checkVerification = this.employerService.checkEmailConfirm(employerPendingApproval);
+        var checkVerification = this.employerService.add(employer);
         if(!checkVerification.isSuccess()){
             return new ErrorResult(Messages.verificationFailed());
         }

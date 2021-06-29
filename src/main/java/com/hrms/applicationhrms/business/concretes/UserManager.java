@@ -5,7 +5,7 @@ import com.hrms.applicationhrms.business.constants.Messages;
 import com.hrms.applicationhrms.core.entities.concretes.User;
 import com.hrms.applicationhrms.core.utilities.helpers.EmailService;
 import com.hrms.applicationhrms.core.utilities.results.*;
-import com.hrms.applicationhrms.dataAccess.abstracts.UserDao;
+import com.hrms.applicationhrms.core.dataAccess.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +51,8 @@ public class UserManager implements UserService {
 
     @Override
     public DataResult<User> getById(int id) {
-        return null;
+        return new SuccessDataResult<>(this.userDao.findById(id).get());
     }
+
 
 }

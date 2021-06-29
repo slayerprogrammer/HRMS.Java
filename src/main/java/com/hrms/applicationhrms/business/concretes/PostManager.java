@@ -7,11 +7,14 @@ import com.hrms.applicationhrms.business.specifications.PostSpecs;
 import com.hrms.applicationhrms.core.utilities.results.*;
 import com.hrms.applicationhrms.dataAccess.abstracts.PostDao;
 import com.hrms.applicationhrms.entities.concretes.Post;
-import com.hrms.applicationhrms.entities.concretes.PostStatus;
+import com.hrms.applicationhrms.entities.enums.PostStatus;
 import com.hrms.applicationhrms.entities.dtos.PostByFilterDto;
 import com.hrms.applicationhrms.entities.dtos.PostListDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -32,10 +35,10 @@ public class PostManager implements PostService {
     }
 
     @Override
-    public DataResult<List<PostListDto>> getFilter(PostByFilterDto postByFilterDto) {
+    public DataResult<List<PostListDto>> getFilter(PostByFilterDto postByFilterDto,int pageNumber) {
+        Pageable pageable = PageRequest.of(pageNumber -1,10); //şimdilik 5
         Specification<Post> spec1 = PostSpecs.postFilter(postByFilterDto);
-
-        List<Post> result = this.postDao.findAll(spec1);
+        Page<Post> result = this.postDao.findAll(spec1,pageable);
         List<Post> active = new ArrayList<>();
 
         for (Post post:result) {
@@ -50,8 +53,18 @@ public class PostManager implements PostService {
     }
 
     @Override
-    public DataResult<List<Post>> getAll() {
-        return new SuccessDataResult<List<Post>>(this.postDao.findAll());
+    public DataResult<Post> getById(int postId) {
+        return new SuccessDataResult<Post>(this.postDao.findById(postId).get());
+    }
+
+    @Override
+    public DataResult<PostListDto> getByPostDetail(int postId) {
+        return new SuccessDataResult<>(this.postDao.getByPostDetail(postId));
+    }
+
+    @Override
+    public DataResult<List<PostListDto>> getAll() {
+        return new SuccessDataResult<List<PostListDto>>(this.postDao.getAll());
     }
 
     @Override
@@ -95,14 +108,15 @@ public class PostManager implements PostService {
     }
 
     @Override
-    public DataResult<Post> getById(int id) {
-        return new SuccessDataResult<Post>(this.postDao.findById(id).get());
+    public DataResult<List<Post>> getAllActivesByEmployerId(int employerId) {
+        return new SuccessDataResult<List<Post>>(this.postDao.getAllActivesByEmployerId(employerId,PostStatus.ACTIVE));
     }
 
     @Override
-    public Result add(Post post) {
-        this.postDao.save(post);
-        return new SuccessResult(Messages.postAdded());
+    public DataResult<PostListDto> add(Post post) {
+        var result = this.postDao.save(post);
+        var dto = this.postDao.getByPostDetail(result.getId());
+        return new SuccessDataResult<PostListDto>(dto,Messages.postAdded());
     }
 
     @Override
@@ -116,4 +130,3 @@ public class PostManager implements PostService {
         return null;
     }
 }
-

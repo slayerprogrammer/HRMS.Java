@@ -21,7 +21,9 @@ public class CityManager implements CityService {
 
     @Override
     public DataResult<List<City>> getAll() {
-        return null;
+        var result = this.cityDao.findAll();
+        result.remove(0);
+        return new SuccessDataResult<>(result);
     }
 
     @Override

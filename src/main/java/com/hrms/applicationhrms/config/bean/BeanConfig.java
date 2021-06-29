@@ -4,6 +4,7 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.hrms.applicationhrms.core.adapters.CloudinaryImageAdapter;
 import com.hrms.applicationhrms.core.adapters.ImageService;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,7 +24,7 @@ public class BeanConfig {
     public ImageService imageService(){
         return new CloudinaryImageAdapter(cloudinaryService());
     }
-    
+
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
